@@ -11,7 +11,7 @@ name: Merge-upstream
 on:
   push:
     branches:
-      - openwrt-21.02
+      - master
   schedule:
     - cron: 30 19 * * *
 
@@ -26,7 +26,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: openwrt-21.02
+        ref: master
         fetch-depth: 0
         lfs: true
 
@@ -53,5 +53,5 @@ jobs:
 
     - name: Push Commits
       env:
-        DOWNSTREAM_BRANCH: openwrt-21.02
+        DOWNSTREAM_BRANCH: master
       run: git push origin $DOWNSTREAM_BRANCH
